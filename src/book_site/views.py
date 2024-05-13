@@ -9,7 +9,8 @@ def home(request):
 
 def book_index(request):
     books = Book.objects.all()
-    return render(request, 'books/index.html', {'books': books})
+    form = BookForm()
+    return render(request, 'books/index.html', {'books': books, 'form': form})
 
 def book_show(request):
     return render(request, 'books/show.html')
@@ -20,7 +21,8 @@ def book_create(request):
         form = BookForm(request.POST)
         if form.is_valid():
             form.save()
-            return render(request, 'books/index.html')
     else:
         form = BookForm()
-    return render(request, 'books/book_form.html', {'form': form})
+    books = Book.objects.all()
+    form = BookForm()
+    return render(request, 'books/index.html', {'books': books, 'form': form})

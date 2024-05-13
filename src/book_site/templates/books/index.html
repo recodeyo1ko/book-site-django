@@ -25,5 +25,10 @@
         {% endfor %}
       </tbody>
     </table>
+    <h2>Add New Book</h2>
+    <form method="post" action="{% url 'book_create' %}">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit">Submit</button>
+    </form>
   </body>
 </html>
