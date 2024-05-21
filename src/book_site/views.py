@@ -16,8 +16,10 @@ def book_show(request, book_id):
     book = Book.objects.get(id=book_id)
     return render(request, 'books/show.html' , {'book': book})
 
-def book_edit(request):
-    return render(request, 'books/edit.html' )
+def book_edit(request, book_id):
+    book = Book.objects.get(id=book_id)
+    form = BookForm(instance=book)
+    return render(request, 'books/edit.html', {'form': form, 'book': book})
 
 def book_create(request):
     if request.method == 'POST':
@@ -32,6 +34,7 @@ def book_create(request):
 
 def book_show(request, book_id):
     book = Book.objects.get(id=book_id)
+    
     return render(request, 'books/show.html', {'book': book})
 
 def book_delete(request, book_id):
@@ -39,13 +42,10 @@ def book_delete(request, book_id):
     book.delete()
     return redirect('book_index')
 
-def book_edit(request, book_id):
+def book_update(request, book_id):
     book = Book.objects.get(id=book_id)
-    if request.method == 'POST':
-        form = BookForm(request.POST, instance=book)
-        if form.is_valid():
-            form.save()
-            return redirect('book_show', book_id=book.id)
-    else:
-        form = BookForm(instance=book)
-    return render(request, 'books/edit.html', {'form': form})
+    form = BookForm(request.POST, instance=book)
+    if form.is_valid():
+        form.save()
+        return redirect('book_index')
+    return render(request, 'books/edit.html', {'form': form, 'book': book})
