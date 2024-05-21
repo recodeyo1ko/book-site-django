@@ -22,7 +22,8 @@
           <td>{{ book.title }}</td>
           <td>{{ book.body }}</td>
           <td>
-            <a href="{% url 'book_show' book.id %}">Detail</a>
+            <a href="{% url 'book_show' book.id %}">Show</a>
+            <a href="{% url 'book_delete' book.id %}">Delete</a>
           </td>
           <td></td>
           <td></td>

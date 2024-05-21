@@ -9,5 +9,6 @@
     <p><strong>Body: </strong>{{ book.body }}</p>
 
     <a href="{% url 'book_index' %}">Back</a>
+    <a href="{% url 'book_delete' book.id %}">Delete</a>
   </body>
 </html>

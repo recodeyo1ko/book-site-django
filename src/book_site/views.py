@@ -34,6 +34,11 @@ def book_show(request, book_id):
     book = Book.objects.get(id=book_id)
     return render(request, 'books/show.html', {'book': book})
 
+def book_delete(request, book_id):
+    book = Book.objects.get(id=book_id)
+    book.delete()
+    return redirect('book_index')
+
 def book_edit(request, book_id):
     book = Book.objects.get(id=book_id)
     if request.method == 'POST':
