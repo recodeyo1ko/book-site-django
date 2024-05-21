@@ -21,7 +21,19 @@
         <tr>
           <td>{{ book.title }}</td>
           <td>{{ book.body }}</td>
+          <td>
+            <a href="{% url 'book_show' book.id %}">Show</a>
+          </td>
+          <td>
+            <a href="{% url 'book_edit' book.id %}">Edit</a>
+          </td>
+          <td>
+            <a href="{% url 'book_delete' book.id %}">Delete</a>
+          </td>
+          <td></td>
+          <td></td>
         </tr>
+
         {% endfor %}
       </tbody>
     </table>
