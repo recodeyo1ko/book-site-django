@@ -30,7 +30,7 @@ def book_create(request):
         form = BookForm()
     books = Book.objects.all()
     form = BookForm()
-    return render(request, 'books/index.html', {'books': books, 'form': form})
+    return redirect('book_index')
 
 def book_show(request, book_id):
     book = Book.objects.get(id=book_id)
