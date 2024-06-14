@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Home Page</title>
-  </head>
-  <body>
-    <h1>ようこそ<strong>book site</strong>へ！</h1>
-    <p><a href="{% url 'book_index' %}">start</a></p>
-  </body>
-</html>
+{% extends "base.html" %} {% block content %}
+<body>
+  <h1>ようこそ<strong>book site</strong>へ！</h1>
+  <p><a href="{% url 'book_index' %}">start</a></p>
+</body>
+
+{% endblock %}

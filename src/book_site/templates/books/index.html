@@ -1,46 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Book List</title>
-  </head>
-  <body>
-    <h1>Book List</h1>
-    <h1>Books</h1>
-    <table>
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Body</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
+{% extends "base.html" %} {% block content %}
+<h1>Book List</h1>
+<h1>Books</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
-      <tbody>
-        {% for book in books %}
-        <tr>
-          <td>{{ book.title }}</td>
-          <td>{{ book.body }}</td>
-          <td>
-            <a href="{% url 'book_show' book.id %}">Show</a>
-          </td>
-          <td>
-            <a href="{% url 'book_edit' book.id %}">Edit</a>
-          </td>
-          <td>
-            <a href="{% url 'book_delete' book.id %}">Delete</a>
-          </td>
-          <td></td>
-          <td></td>
-        </tr>
+  <tbody>
+    {% for book in books %}
+    <tr>
+      <td>{{ book.title }}</td>
+      <td>{{ book.body }}</td>
+      <td>
+        <a href="{% url 'book_show' book.id %}">Show</a>
+      </td>
+      <td>
+        <a href="{% url 'book_edit' book.id %}">Edit</a>
+      </td>
+      <td>
+        <a href="{% url 'book_delete' book.id %}">Delete</a>
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
 
-        {% endfor %}
-      </tbody>
-    </table>
-    <h2>Add New Book</h2>
-    <form method="post" action="{% url 'book_create' %}">
-      {% csrf_token %} {{ form.as_p }}
-      <button type="submit">Submit</button>
-    </form>
-  </body>
-</html>
+    {% endfor %}
+  </tbody>
+</table>
+<h2>Add New Book</h2>
+<form method="post" action="{% url 'book_create' %}">
+  {% csrf_token %} {{ form.as_p }}
+  <button type="submit">Submit</button>
+</form>
+{% endblock %}
